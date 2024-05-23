@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import pickle
 import pandas as pd
 
@@ -7,8 +8,9 @@ with open('diabetes_model.pkl', 'rb') as file:
     model = pickle.load(file)
 
 app = Flask(__name__)
+CORS(app)  # Enable CORS for all routes
 
-@app.route('/predict', methods=['POST'])
+@app.route('/predict', methods=['POST', 'OPTIONS'])
 def predict():
     data = request.json
     # Convert the data into a DataFrame
