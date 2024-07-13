@@ -1,11 +1,11 @@
 from flask import Flask, request, jsonify
 import numpy as np
 import tensorflow as tf
-from keras.models import load_model
+from tensorflow.keras.models import load_model
 import json
 
 app = Flask(__name__)
-model = load_model('./RainfallReveal.h5')
+model = load_model('RainfallReveal.h5')
 
 @app.route('/predict', methods=['POST'])
 def predict():
