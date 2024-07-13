@@ -1,2 +1,2 @@
 # gunicorn_config.py
-timeout = 120  # Set timeout to 120 seconds
+timeout = 5700  # Set timeout to 120 seconds
