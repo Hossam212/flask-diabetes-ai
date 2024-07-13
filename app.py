@@ -16,7 +16,7 @@ def predict():
     weather_data = data['weather_data']
     
     # Assuming the model expects a 3D array: (samples, time steps, features)
-    processed_data = np.array(weather_data).reshape((1, 160, 3))
+    processed_data = np.array([[hour['dew_point_kelvin'], hour['temperature_kelvin'], hour['precipitation']] for hour in weather_data]).reshape((1, 480, 3))
     
     prediction = model.predict(processed_data)
     return jsonify({'prediction': prediction.tolist()})
