@@ -14,7 +14,7 @@ model = legacy_h5_format.load_model_from_hdf5('RainfallReveal.h5', custom_object
 def predict():
     data = request.get_json()
     weather_data = data['weather_data']
-    
+    console.log(weather_data)
     # Assuming the model expects a 3D array: (samples, time steps, features)
     processed_data = np.array([[hour['dew_point_kelvin'], hour['temperature_kelvin'], hour['precipitation']] for hour in weather_data]).reshape((1, 480, 3))
     
