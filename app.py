@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import numpy as np
 import tensorflow as tf
 import json
@@ -6,6 +7,7 @@ from keras.src.legacy.saving import legacy_h5_format
 
 
 app = Flask(__name__)
+CORS(app, resources={r"/*": {"origins": "*"}})
 model = legacy_h5_format.load_model_from_hdf5('RainfallReveal.h5', custom_objects={'mae': 'mae'})
 
 @app.route('/predict', methods=['POST'])
